@@ -33,7 +33,7 @@ export default function ApartmentsPage() {
       }
       const data = await response.json();
       // Transform data to match expected interface
-      const transformedData = data.map((apt: any) => ({
+      const transformedData = data.map((apt: Apartment) => ({
         title: apt.title,
         price: `$${apt.price}`,
         location: apt.location,
