@@ -2,6 +2,7 @@
 
 import { Row, Col } from "react-bootstrap";
 import ApartmentCard from "./ApartmentCard";
+import ApartmentListItem from "./ApartmentListItem";
 
 interface Apartment {
   title: string;
@@ -34,8 +35,8 @@ export default function ApartmentList({ apartments, grid = false }: ApartmentLis
   return (
     <Row xs={1} className="g-4">
       {apartments.map((apt, i) => (
-        <Col md={6} key={i}>
-          <ApartmentCard {...apt} />
+        <Col key={i}>
+          <ApartmentListItem {...apt} />
         </Col>
       ))}
     </Row>

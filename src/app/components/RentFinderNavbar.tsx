@@ -8,7 +8,12 @@ export default function RentFinderNavbar() {
     <Navbar bg="light" expand="lg" className="fixed-top shadow px-3">
       <Container fluid>
         <Navbar.Brand href="#" className="fw-bold d-flex align-items-center">
-          <span className="me-2">📍</span> RentFinder
+          <span className="me-2"><img
+              alt=""
+              src="https://i.pinimg.com/564x/58/f9/29/58f929029e220b69716d342df56d34c4.jpg"
+              width="30"
+              className="d-inline-block align-top"
+            /></span> RentFinder
         </Navbar.Brand>
 
         <Form className="d-flex mx-auto w-50">

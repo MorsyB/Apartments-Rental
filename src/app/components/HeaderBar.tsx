@@ -11,7 +11,7 @@ function HeaderBar() {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="/img/logo.svg"
+              src="https://e7.pngegg.com/pngimages/940/524/png-clipart-computer-icons-icon-design-address-others-miscellaneous-heart.png"
               width="30"
               height="30"
               className="d-inline-block align-top"

@@ -24,8 +24,8 @@ export default function ApartmentCard({
   amenities,
 }: ApartmentProps) {
   return (
-    <Card className="shadow rounded-4 h-100 apartment-card-hover">
-      <Card.Img variant="top" src={image} className="rounded-top-4" />
+    <Card className="shadow rounded-4 h-100 apartment-card-hover" style={{ height: '350px !important' }}>
+      <Card.Img variant="top" src={image} className="rounded-top-4"/>
       <Card.Body>
         <Card.Title>{price} /mo</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{title}</Card.Subtitle>

@@ -27,7 +27,7 @@ export default function ApartmentsPage() {
 
   const fetchApartments = async () => {
     try {
-      const response = await fetch("http://192.168.33.17:5000/api/apartments");
+      const response = await fetch("http://localhost:5000/api/apartments");
       if (!response.ok) {
         throw new Error("Failed to fetch apartments");
       }
@@ -58,7 +58,7 @@ export default function ApartmentsPage() {
       <RentFinderNavbar />
       <Container fluid className="mt-4 pt-5">
         <Row>
-          <Col md={3}>
+          <Col md={2}>
             <FiltersSidebar />
           </Col>
           <Col md={9}>
