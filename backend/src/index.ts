@@ -1,34 +1,31 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import mongoose from "mongoose";
+import { getAllApartments, getApartmentById } from "./apartments/get";
+import { updateApartment } from "./apartments/put";
+import { createApartment } from "./apartments/post";
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://apartments-rental.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
-interface Apartment {
-  id: number;
-  title: string;
-  price: number;
-  location: string;
-}
-
-const apartments: Apartment[] = [
-  { id: 1, title: "Modern 2-Bedroom Downtown", price: 1200, location: "Downtown" },
-  { id: 2, title: "Studio Midtown", price: 900, location: "Midtown" },
-  { id: 3, title: "Luxury 3-Bedroom Uptown", price: 2000, location: "Uptown" },
-];
+// Connect to MongoDB
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://morsyb6c_db_user:dbpass@ar-test.iuvd0rv.mongodb.net/?retryWrites=true&w=majority&appName=ar-test";
+mongoose.connect(mongoURI)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err: any) => console.error("Failed to connect to MongoDB", err));
 
 // Get all apartments
-app.get("/api/apartments", (req: Request, res: Response) => {
-  res.json(apartments);
-});
-
+app.get("/api/apartments", async (req: Request, res: Response) => getAllApartments(req, res));
 // Get one apartment by ID
-app.get("/api/apartments/:id", (req: Request, res: Response) => {
-  const apartment = apartments.find(a => a.id === parseInt(req.params.id));
-  if (!apartment) return res.status(404).json({ error: "Not found" });
-  res.json(apartment);
-});
+app.get("/api/apartments/:id", async (req: Request, res: Response) => getApartmentById(req, res));
+// Create new apartment
+app.post("/api/apartments", async (req: Request, res: Response) => createApartment(req, res));
+// Update apartment by ID
+app.put("/api/apartments/:id", async (req: Request, res: Response) => updateApartment(req, res));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
