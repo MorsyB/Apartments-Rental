@@ -7,7 +7,7 @@ import { createApartment } from "./apartments/post";
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://apartments-rental.vercel.app'],
+  origin: ['http://localhost:3000', '"https://apartments-rental-1.onrender.com'],
   credentials: true
 }));
 app.use(express.json());
