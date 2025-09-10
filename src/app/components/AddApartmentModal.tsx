@@ -33,7 +33,7 @@ export default function AddApartmentModal({ show, onClose, onApartmentAdded }: A
     const amenitiesArray = amenities.split(",").map((a) => a.trim()).filter((a) => a.length > 0);
 
     try {
-      const response = await fetch("http://192.168.33.17:5000/api/apartments", {
+      const response = await fetch("https://apartments-rental.onrender.com/api/apartments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

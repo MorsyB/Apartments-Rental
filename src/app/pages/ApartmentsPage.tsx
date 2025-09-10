@@ -27,7 +27,7 @@ export default function ApartmentsPage() {
 
   const fetchApartments = async () => {
     try {
-      const response = await fetch("http://localhost:10000/api/apartments");
+      const response = await fetch("https://apartments-rental.onrender.com/api/apartments");
       if (!response.ok) {
         throw new Error("Failed to fetch apartments");
       }
