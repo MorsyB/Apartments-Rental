@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup, ToggleButton } from "react-bootstrap";
+import { FaList, FaTh } from "react-icons/fa";
 import RentFinderNavbar from "../components/RentFinderNavbar";
 import FiltersSidebar from "../components/FiltersSidebar";
 import ApartmentList from "../components/ApartmentList";
-import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { FaList, FaTh } from "react-icons/fa";
 import AddApartmentModal from "../components/AddApartmentModal";
 
 interface Apartment {
@@ -23,7 +22,7 @@ interface Apartment {
 export default function ApartmentsPage() {
   const [apartments, setApartments] = useState<Apartment[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [viewMode, setViewMode] = useState("list");
+  const [viewMode, setViewMode] = useState("grid");
 
   const fetchApartments = async () => {
     try {
@@ -58,17 +57,17 @@ export default function ApartmentsPage() {
       <RentFinderNavbar />
       <Container fluid className="mt-4 pt-5">
         <Row>
-          <Col md={2}>
+          <Col md={3} className="d-none d-md-block">
             <FiltersSidebar />
           </Col>
-          <Col md={9}>
-            <div className="d-flex justify-content-between align-items-center mb-4">
-            <h4>Available Apartments</h4>
-            <div className="d-flex align-items-center">
-              <Button variant="dark" className="me-2 rounded-pill" onClick={() => setShowModal(true)}>
+          <Col md={9} xs={12}>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+            <h4 className="mb-3 mb-md-0">Available Apartments</h4>
+            <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center w-100 w-md-auto">
+              <Button variant="dark" className="mb-2 mb-sm-0 me-sm-2 rounded-pill" onClick={() => setShowModal(true)}>
                 Add New Apartment
               </Button>
-              <ButtonGroup className="rounded-pill">
+              <ButtonGroup className="rounded-pill d-none d-md-flex">
                 <ToggleButton
                   id="toggle-list"
                   type="radio"
