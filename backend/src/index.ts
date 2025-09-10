@@ -27,5 +27,5 @@ app.post("/api/apartments", async (req: Request, res: Response) => createApartme
 // Update apartment by ID
 app.put("/api/apartments/:id", async (req: Request, res: Response) => updateApartment(req, res));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
